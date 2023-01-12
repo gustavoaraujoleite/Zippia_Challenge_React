@@ -11,7 +11,7 @@ import classes from "./style.module.css";
 import Drop from "../../UI/Dropdown";
 
 export default function JobsPage() {
-  //useState for setting the data and carousel sliding control
+  //useState for setting the data and carousel sliding controls
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
   const [filterClicked, setFilterClicked] = useState(false);
