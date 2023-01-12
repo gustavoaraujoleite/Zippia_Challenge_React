@@ -22,8 +22,6 @@ export default function JobsPage() {
     setIndex(selectedIndex);
   };
 
-  
-
   //fetching data and saving it to data variable
   const fetchDataHandler = useCallback(async () => {
     setLoading(true);
@@ -53,11 +51,11 @@ export default function JobsPage() {
   }, [fetchDataHandler]);
 
   //Reset all filters
-  const resetAll = useCallback(async() => {
-    
+  const resetAll = useCallback(async () => {
     setChosenCompany("all");
     setFilterClicked(false);
-    fetchDataHandler()
+    setIndex(0);
+    fetchDataHandler();
   }, [fetchDataHandler]);
 
   function filterClickedHandler() {
@@ -70,8 +68,6 @@ export default function JobsPage() {
       setChosenCompany(data.target.value);
     }
   }
-
-  
 
   return (
     <>
@@ -93,7 +89,11 @@ export default function JobsPage() {
               onSelect={(data) => selectHandler(data)}
               defaultValue={chosenCompany}
             />
-            <Button onClick={filterClickedHandler} variant="dark">
+            <Button
+              onClick={filterClickedHandler}
+              variant="dark"
+              disabled={filterClicked ? true : false}
+            >
               Jobs posted in the last 7 days
             </Button>
 
