@@ -60,6 +60,8 @@ export default function JobsPage() {
       setChosenCompany(data.target.value);
     }
   }
+
+  //Reset all filters
   function resetAll() {
     setLoading(true);
     setChosenCompany("");
@@ -69,6 +71,7 @@ export default function JobsPage() {
 
   return (
     <>
+      {/* Show Spinner for Loading indicator */}
       {loading && (
         <div className={classes.spinner_container}>
           <Spinner

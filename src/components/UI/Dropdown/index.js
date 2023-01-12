@@ -1,3 +1,7 @@
+/**
+ * Component responsible for rendering a Dynamic Dropdown
+ */
+
 import classes from './style.module.css'
 
 export default function Drop(props) {

@@ -1,3 +1,7 @@
+/**
+ * Component responsible for rendering the Error Page if Route does not match
+ */
+
 import classes from "./style.module.css";
 
 export default function NotFound() {

@@ -1,7 +1,10 @@
+/**
+ * Component responsible for rendering the Route Navigation
+ */
+
 import React from "react";
 import {
   BrowserRouter,
-  Redirect,
   Route,
   Switch,
   useLocation,

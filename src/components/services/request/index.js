@@ -1,3 +1,7 @@
+/**
+ * Component responsible for fetching data from api endpoint
+ */
+
 import api from "../api";
 
 export async function request() {
