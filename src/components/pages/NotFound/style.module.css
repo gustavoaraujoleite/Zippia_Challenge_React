@@ -1,0 +1,12 @@
+.container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 4rem;
+}
+.span_text {
+  color: rgb(252, 167, 8);
+  font-weight: bold;
+}

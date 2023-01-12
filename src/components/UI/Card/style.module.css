@@ -1,0 +1,50 @@
+.container {
+  width: 70vw;
+  background-color: rgba(39, 39, 39, 0.925);
+  margin-top: 2rem;
+  height: 90vh;
+  padding: 2rem 6rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  color: #fff;
+  margin: 2rem 3rem;
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar {
+  width: 10px;
+}
+
+.container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgba(128, 128, 128, 0.473);
+  border-radius: 4px;
+}
+
+.container::-webkit-scrollbar-thumb {
+  background: rgb(224, 148, 5);
+  border-radius: 10px;
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+  background: rgb(224, 148, 5);
+}
+
+.title_text {
+  margin-bottom: 2rem;
+}
+.company_text {
+  font-size: 18px;
+  margin-bottom: 4rem;
+  color: rgb(224, 148, 5);
+  font-style: italic;
+}
+.description_text {
+  text-align: justify;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 1170px) {
+  .container {
+    margin: 2rem 0;
+  }
+}
