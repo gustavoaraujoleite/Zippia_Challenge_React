@@ -15,12 +15,14 @@ export default function JobsPage() {
   const [data, setData] = useState([]);
   const [index, setIndex] = useState(0);
   const [filterClicked, setFilterClicked] = useState(false);
-  const [chosenCompany, setChosenCompany] = useState("");
+  const [chosenCompany, setChosenCompany] = useState("all");
   const [loading, setLoading] = useState(false);
 
   const handleSelect = (selectedIndex) => {
     setIndex(selectedIndex);
   };
+
+  
 
   //fetching data and saving it to data variable
   const fetchDataHandler = useCallback(async () => {
@@ -48,26 +50,28 @@ export default function JobsPage() {
   //Fetching data with useCallback for any promises update
   useEffect(() => {
     fetchDataHandler();
-  }, [fetchDataHandler, filterClicked]);
+  }, [fetchDataHandler]);
+
+  //Reset all filters
+  const resetAll = useCallback(async() => {
+    
+    setChosenCompany("all");
+    setFilterClicked(false);
+    fetchDataHandler()
+  }, [fetchDataHandler]);
 
   function filterClickedHandler() {
-    setFilterClicked(!filterClicked);
+    setFilterClicked(true);
   }
   function selectHandler(data) {
     if (data.target.value === "all") {
-      setChosenCompany("");
+      setChosenCompany("all");
     } else {
       setChosenCompany(data.target.value);
     }
   }
 
-  //Reset all filters
-  function resetAll() {
-    setLoading(true);
-    setChosenCompany("");
-    setFilterClicked(false);
-    setLoading(false);
-  }
+  
 
   return (
     <>
@@ -87,6 +91,7 @@ export default function JobsPage() {
             <Drop
               data={data.slice(1, 11)}
               onSelect={(data) => selectHandler(data)}
+              defaultValue={chosenCompany}
             />
             <Button onClick={filterClickedHandler} variant="dark">
               Jobs posted in the last 7 days
@@ -112,14 +117,13 @@ export default function JobsPage() {
                 ? data
                     .slice(1, 11)
                     .filter(function (item) {
-                      if (chosenCompany === "") {
+                      if (chosenCompany === "all") {
                         return true;
                       } else {
                         return item.company === chosenCompany;
                       }
                     })
                     .map((element, index) => {
-                      console.log(index);
                       return (
                         <Carousel.Item key={index}>
                           <Card
